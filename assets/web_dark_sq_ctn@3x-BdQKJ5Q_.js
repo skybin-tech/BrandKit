@@ -1,0 +1,1 @@
+const e=""+new URL("web_dark_sq_ctn@3x-CsSHAmrF.png",import.meta.url).href;export{e as default};
