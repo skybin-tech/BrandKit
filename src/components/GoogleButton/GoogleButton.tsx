@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import type { GoogleButtonProps } from './GoogleButton.types';
 import { googleAssetMap } from './googleAssetMap';
@@ -31,26 +31,27 @@ const GoogleButton: React.FC<GoogleButtonProps> = ({
 
 
   const buildKey = (t: string) => `${t}-${shape}-${variant}`;
-  const key = buildKey(theme);
-  const fallbackKey = buildKey('neutral');
+  const [images, setImages] = useState<{ [resolution: string]: string } | null>(null);
 
-  const images =
-    (googleAssetMap as any)[key] || (theme === 'light' ? (googleAssetMap as any)[fallbackKey] : undefined);
+  useEffect(() => {
+    const loadImages = async () => {
+      const key = `${theme}-${shape}-${variant}`;
+      const loadedImages = await googleAssetMap(key);
+      setImages(loadedImages);
+    };
 
-  if (!images) {
-    console.warn(`GoogleButton: No image set found for theme="${theme}", shape="${shape}", variant="${variant}"`);
-    return null;
-  }
+    loadImages();
+  }, [theme, shape, variant]);
 
   return (
     <Button onClick={onClick} style={{ height }}>
       <img
-        src={images['1x']}
+        src={images?.['1x']}
         srcSet={`
-          ${images['1x']} 1x,
-          ${images['2x']} 2x,
-          ${images['3x']} 3x,
-          ${images['4x']} 4x
+          ${images?.['1x']} 1x,
+          ${images?.['2x']} 2x,
+          ${images?.['3x']} 3x,
+          ${images?.['4x']} 4x
         `}
         alt={alt}
       />
