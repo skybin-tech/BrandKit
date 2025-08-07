@@ -25,11 +25,13 @@
     "noUncheckedSideEffectImports": true,
     "erasableSyntaxOnly": true,
     "skipLibCheck": true,
+    "allowJs": true,
     "types": [],
     /* Aliases */
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@hooks": ["src/hooks/*"],
       "@data/*": ["src/_data/*"]
     },
 
