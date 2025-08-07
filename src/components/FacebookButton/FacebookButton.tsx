@@ -3,6 +3,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import facebookIconWhite from '@/assets/facebook/Secondary.png';
 import facebookIconBlue from '@/assets/facebook/Primary.png';
+import useLink from '@/hooks/useLink';
 
 export interface FacebookButtonProps {
   mode: 'login' | 'continue';
@@ -47,16 +48,19 @@ const FacebookButton: React.FC<FacebookButtonProps> = ({
   mode,
   variant,
   onClick,
-}) => (
-  <Button onClick={onClick} $variant={variant}>
-    <img
-      src={variant === 'filled' ? facebookIconWhite : facebookIconBlue}
-      alt="Facebook"
-      width={20}
-      height={20}
-    />
-    {mode === 'login' ? 'Login with Facebook' : 'Continue with Facebook'}
-  </Button>
-);
+}) => {
+  useLink("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+  return (
+    <Button onClick={onClick} $variant={variant}>
+      <img
+        src={variant === 'filled' ? facebookIconWhite : facebookIconBlue}
+        alt="Facebook"
+        width={20}
+        height={20}
+      />
+      {mode === 'login' ? 'Login with Facebook' : 'Continue with Facebook'}
+    </Button>
+  )
+};
 
 export default FacebookButton;
