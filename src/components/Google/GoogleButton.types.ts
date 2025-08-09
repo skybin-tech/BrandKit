@@ -9,4 +9,6 @@ export interface GoogleButtonProps {
     alt?: string;
     onClick?: () => void;
     height?: number;
+    disabled?: boolean;
+    className?: string;
 }

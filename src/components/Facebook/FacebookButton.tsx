@@ -9,6 +9,8 @@ export interface FacebookButtonProps {
   mode: 'login' | 'continue';
   variant: 'filled' | 'outline';
   onClick: () => void;
+  disabled?: boolean;
+  className?: string;
 }
 
 const styles = {
@@ -48,10 +50,13 @@ const FacebookButton: React.FC<FacebookButtonProps> = ({
   mode,
   variant,
   onClick,
+  disabled,
+  className
 }) => {
   useLink("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
   return (
-    <Button onClick={onClick} $variant={variant}>
+    <Button onClick={onClick} $variant={variant} disabled={disabled}
+      className={className}>
       <img
         src={variant === 'filled' ? facebookIconWhite : facebookIconBlue}
         alt="Facebook"

@@ -7,6 +7,8 @@ export interface GitHubButtonProps {
     mode: 'login' | 'continue';
     dark?: boolean;   // toggles background only
     onClick: () => void;
+    disabled?: boolean;
+    className?: string;
 }
 
 const themes = {
@@ -54,8 +56,12 @@ const GitHubButton: React.FC<GitHubButtonProps> = ({
     mode,
     dark = false,
     onClick,
+    disabled,
+    className
 }) => (
-    <Button onClick={onClick} $dark={dark}>
+    <Button onClick={onClick} $dark={dark}
+        disabled={disabled}
+        className={className}>
         <MarkGithubIcon size={20} />
         {mode === 'login' ? 'Login with GitHub' : 'Continue with GitHub'}
     </Button>

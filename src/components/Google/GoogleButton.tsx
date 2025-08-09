@@ -27,6 +27,8 @@ const GoogleButton: React.FC<GoogleButtonProps> = ({
   alt = 'Sign in with Google',
   height = 48,
   onClick,
+  disabled,
+  className
 }) => {
 
 
@@ -44,7 +46,8 @@ const GoogleButton: React.FC<GoogleButtonProps> = ({
   }, [theme, shape, variant]);
 
   return (
-    <Button onClick={onClick} style={{ height }}>
+    <Button onClick={onClick} style={{ height }} disabled={disabled}
+      className={className}>
       <img
         src={images?.['1x']}
         srcSet={`

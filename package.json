@@ -1,6 +1,6 @@
 {
   "name": "@skybin-tech/brandkit",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "type": "module",
   "description": "React components for brand-compliant social login buttons",
   "main": "dist/index.js",
