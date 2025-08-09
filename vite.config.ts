@@ -4,6 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import checker from 'vite-plugin-checker';
 import eslint from 'vite-plugin-eslint';
 import mkcert from 'vite-plugin-mkcert';
+import dts from 'vite-plugin-dts';
 import path from 'path';
 
 export default defineConfig({
@@ -11,7 +12,9 @@ export default defineConfig({
   tsconfigPaths(),
   checker({ typescript: true }),
   eslint(),
+  dts({ include: ['src'] }),
   mkcert()],
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -26,12 +29,13 @@ export default defineConfig({
       fileName: (format) => `brandkit.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'styled-components'],
+      external: ['react', 'react-dom', 'styled-components', '@primer/octicons-react'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          'styled-components': 'styled'
+          'styled-components': 'styled',
+          '@primer/octicons-react': 'Octicons'
         },
       },
     },

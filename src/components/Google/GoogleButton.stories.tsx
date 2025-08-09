@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import GoogleButton from './';
+import GoogleButton from './GoogleButton';
 
 const meta: Meta<typeof GoogleButton> = {
     title: 'Components/GoogleButton',  // Title for the story

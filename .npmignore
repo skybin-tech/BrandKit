@@ -1,0 +1,6 @@
+src/**/*.stories.tsx
+src/**/*.stories.ts
+.storybook
+storybook-static
+node_modules
+*.log
