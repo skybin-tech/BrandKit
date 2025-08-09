@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FacebookButton from './FacebookButton';
+import FacebookButton from './';
 
 const meta: Meta<typeof FacebookButton> = {
     title: 'OAuth/FacebookLoginBtn',
