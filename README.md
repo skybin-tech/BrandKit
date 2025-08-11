@@ -10,6 +10,7 @@ At BrandKit, our mission is to empower developers by providing a comprehensive c
 - Uses correct fonts, colors, logos, and spacing
 - Supports light/dark themes and multiple resolutions
 - Easy to integrate with your own auth logic
+- **Open to new collaborators**: We welcome contributions to add more buttons from various platforms beyond Google, Facebook, and GitHub.
 
 ## 📦 Installation
 
