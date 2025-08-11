@@ -1,8 +1,9 @@
 {
   "name": "@skybin-tech/brandkit",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "React components for brand-compliant social login buttons",
+  "author": "Anwar <anwar@skybin.io>",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
@@ -73,7 +74,10 @@
     "auth-ui",
     "brand-compliance"
   ],
-  "author": "Your Name",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skybin-tech/BrandKit.git"
+  },
   "license": "MIT",
   "dependencies": {
     "@primer/octicons-react": "^19.15.5"
