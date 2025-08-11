@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import GitHubButton from './GitHubButton';
 
 const meta: Meta<typeof GitHubButton> = {
-    title: 'OAuth/GitHubSocialBtn',
+    title: 'Components/GitHubButton',
     component: GitHubButton,
     argTypes: {
         mode: { control: 'radio', options: ['login', 'continue'] },
