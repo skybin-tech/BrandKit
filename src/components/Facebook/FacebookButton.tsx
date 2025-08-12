@@ -8,7 +8,7 @@ import useLink from '@/hooks/useLink';
 export interface FacebookButtonProps {
   mode: 'login' | 'continue';
   variant: 'filled' | 'outline';
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   className?: string;
 }

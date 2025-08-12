@@ -9,7 +9,7 @@ export interface LinkedInButtonProps {
     disabled?: boolean;
     className?: string;
     shape?: 'round' | 'square';
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 const themes = {

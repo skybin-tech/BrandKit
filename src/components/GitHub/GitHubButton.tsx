@@ -6,7 +6,7 @@ import { MarkGithubIcon } from '@primer/octicons-react';
 export interface GitHubButtonProps {
     mode: 'login' | 'continue';
     dark?: boolean;   // toggles background only
-    onClick: () => void;
+    onClick?: () => void;
     disabled?: boolean;
     className?: string;
 }

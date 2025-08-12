@@ -1,6 +1,6 @@
 {
   "name": "@skybin-tech/brandkit",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "type": "module",
   "description": "React components for brand-compliant social login buttons",
   "author": "Anwar <anwar@skybin.io>",
@@ -19,7 +19,7 @@
     "start": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "deploy": "gh-pages -d storybook-static",
-    "publish": "yarn version --patch && yarn publish --access public"
+    "publish2": "yarn version --patch && yarn publish --access public"
   },
   "peerDependencies": {
     "react": ">=17",
