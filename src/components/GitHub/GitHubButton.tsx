@@ -59,7 +59,7 @@ const GitHubButton: React.FC<GitHubButtonProps> = ({
     disabled,
     className
 }) => (
-    <Button onClick={onClick} $dark={dark}
+    <Button onClick={onClick} type="button" $dark={dark}
         disabled={disabled}
         className={className}>
         <MarkGithubIcon size={20} />

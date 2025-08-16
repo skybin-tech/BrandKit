@@ -1,6 +1,8 @@
+// GoogleButton.types.ts
+
 export type GoogleButtonTheme = 'light' | 'dark' | 'neutral';
 export type GoogleButtonShape = 'rounded' | 'square';
-export type GoogleButtonVariant = 'SI' | 'SU' | 'ctn'; // Sign In, Sign Up, Continue
+export type GoogleButtonVariant = 'SI' | 'SU' | 'ctn' | 'na'; // Sign In, Sign Up, Continue
 
 export interface GoogleButtonProps {
     theme?: GoogleButtonTheme;

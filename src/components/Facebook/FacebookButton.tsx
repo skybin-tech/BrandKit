@@ -55,7 +55,7 @@ const FacebookButton: React.FC<FacebookButtonProps> = ({
 }) => {
   useLink("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
   return (
-    <Button onClick={onClick} $variant={variant} disabled={disabled}
+    <Button type="button" onClick={onClick} $variant={variant} disabled={disabled}
       className={className}>
       <img
         src={variant === 'filled' ? facebookIconWhite : facebookIconBlue}

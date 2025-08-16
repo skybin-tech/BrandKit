@@ -67,7 +67,7 @@ export const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     shape = 'round',
     onClick,
 }) => (
-    <Button
+    <Button type="button"
         onClick={onClick}
         disabled={disabled}
         $dark={dark}

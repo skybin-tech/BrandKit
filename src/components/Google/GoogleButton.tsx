@@ -1,63 +1,81 @@
-import React, { useEffect, useState } from 'react';
+// src/components/GoogleButton/GoogleButton.tsx
+import React from 'react';
 import styled from 'styled-components';
-import type { GoogleButtonProps } from './GoogleButton.types';
-import { googleAssetMap } from './googleAssetMap';
+import { svgMap } from './googleAssets';
+import type {
+  GoogleButtonTheme,
+  GoogleButtonShape,
+  GoogleButtonVariant,
+  GoogleButtonProps,
+} from './GoogleButton.types';
 
+/* ---------- props ---------- */
+
+
+/* ---------- helpers ---------- */
+const variantAlt = (v: GoogleButtonVariant): string => {
+  switch (v) {
+    case 'SI': return 'Sign in with Google';
+    case 'SU': return 'Sign up with Google';
+    case 'ctn':
+    case 'na': return 'Continue with Google';
+    default: return 'Google';
+  }
+};
+
+const px = (n?: number) => (typeof n === 'number' ? `${n}px` : '48px');
+
+/* ---------- styles ---------- */
 const Button = styled.button`
-  border: none;
-  background: none;
+  border: 0;
+  background: transparent;
   padding: 0;
+  line-height: 0;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 
   img {
     display: block;
     height: 100%;
-    transition: opacity 0.2s ease-in-out;
+    width: auto;
+    transition: opacity 0.2s ease-in-out, transform 0.06s ease-in-out;
   }
 
   &:hover img {
-    opacity: 0.9;
+    opacity: 0.92;
+  }
+  &:active img {
+    transform: translateY(0.5px);
   }
 `;
 
+/* ---------- component ---------- */
 const GoogleButton: React.FC<GoogleButtonProps> = ({
   theme = 'light',
   shape = 'rounded',
   variant = 'SI',
-  alt = 'Sign in with Google',
-  height = 48,
+  alt,
   onClick,
+  height = 48,
   disabled,
-  className
+  className,
 }) => {
-
-
-  const buildKey = (t: string) => `${t}-${shape}-${variant}`;
-  const [images, setImages] = useState<{ [resolution: string]: string } | null>(null);
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const key = `${theme}-${shape}-${variant}`;
-      const loadedImages = await googleAssetMap(key);
-      setImages(loadedImages);
-    };
-
-    loadImages();
-  }, [theme, shape, variant]);
+  const src = svgMap[theme][shape][variant];
 
   return (
-    <Button onClick={onClick} style={{ height }} disabled={disabled}
-      className={className}>
-      <img
-        src={images?.['1x']}
-        srcSet={`
-          ${images?.['1x']} 1x,
-          ${images?.['2x']} 2x,
-          ${images?.['3x']} 3x,
-          ${images?.['4x']} 4x
-        `}
-        alt={alt}
-      />
+    <Button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={className}
+      style={{ height: px(height) }}
+      aria-label={alt ?? variantAlt(variant)}
+    >
+      <img src={src} alt={alt ?? variantAlt(variant)} />
     </Button>
   );
 };
