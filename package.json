@@ -1,6 +1,6 @@
 {
   "name": "@skybin-tech/brandkit",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "type": "module",
   "description": "React components for brand-compliant social login buttons",
   "author": "Anwar <anwar@skybin.io>",
