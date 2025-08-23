@@ -17,6 +17,14 @@ export default tseslint.config(
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
+    ignores: [
+      'src/**/*.stories.tsx',
+      'src/**/*.stories.ts',
+      '.storybook/**',
+      'storybook-static/**',
+      'node_modules/**',
+      '*.log',
+    ],
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [

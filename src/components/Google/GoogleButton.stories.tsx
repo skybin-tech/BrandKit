@@ -1,90 +1,61 @@
+// src/components/GoogleButton/GoogleButton.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import GoogleButton from './GoogleButton';
-import type { GoogleButtonProps, GoogleButtonShape, GoogleButtonTheme, GoogleButtonVariant } from './GoogleButton.types';
-
-
-const themes: GoogleButtonTheme[] = ['light', 'dark', 'neutral'];
-const shapes: GoogleButtonShape[] = ['rounded', 'square'];
-const variants: GoogleButtonVariant[] = ['SI', 'SU', 'ctn', 'na'];
+import type { GoogleButtonTheme, GoogleButtonShape, GoogleButtonVariant } from './GoogleButton.types';
 
 const meta: Meta<typeof GoogleButton> = {
     title: 'Components/GoogleButton',
     component: GoogleButton,
-    args: {
-        theme: 'light',
-        shape: 'rounded',
-        variant: 'SI',
-        height: 48,
-        disabled: false,
-    },
+    tags: ['autodocs'],
     argTypes: {
         theme: {
-            control: 'inline-radio',
-            options: themes,
+            control: 'radio',
+            options: ['light', 'dark'] satisfies GoogleButtonTheme[],
         },
         shape: {
-            control: 'inline-radio',
-            options: shapes,
+            control: 'radio',
+            options: ['square', 'rounded'] satisfies GoogleButtonShape[],
         },
         variant: {
-            control: 'inline-radio',
-            options: variants,
+            control: 'radio',
+            options: ['SI', 'SU', 'ctn'] satisfies GoogleButtonVariant[],
         },
-        height: {
-            control: { type: 'number', min: 32, max: 80, step: 2 },
-        },
-        onClick: { action: 'clicked' },
-        className: { control: false },
-        alt: { control: 'text' },
+        width: { control: { type: 'text' } },
+        height: { control: { type: 'text' } },
+        disabled: { control: 'boolean' },
     },
-    parameters: {
-        docs: {
-            description: {
-                component:
-                    'Google sign buttons rendered from SVG assets. Variants: **SI**, **SU**, **ctn**, **na**. Shapes: rounded/square. Themes: light/dark/neutral.',
-            },
-        },
+    args: {
+        theme: 'light',
+        shape: 'square',
+        variant: 'SI',
+        width: undefined,
+        height: undefined,
+        disabled: false,
     },
 };
+
 export default meta;
+type Story = StoryObj<typeof meta>;
 
-type Story = StoryObj<typeof GoogleButton>;
-
+/* ---- Single playground story ---- */
 export const Playground: Story = {};
 
+/* ---- Matrix of all compliant combos ---- */
 export const AllVariants: Story = {
-    render: (args: GoogleButtonProps) => (
-        <div style={{ display: 'grid', gap: 16 }}>
-            {variants.map((v) => (
-                <div key={v} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                    {themes.map((t) => (
-                        <div key={`${v}-${t}`} style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                            <GoogleButton {...args} theme={t} shape="rounded" variant={v} />
-                            <GoogleButton {...args} theme={t} shape="square" variant={v} />
-                        </div>
-                    ))}
-                </div>
-            ))}
+    render: () => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            {(['light', 'dark'] as const).map((theme) =>
+                (['square', 'rounded'] as const).map((shape) =>
+                    (['SI', 'SU', 'ctn'] as const).map((variant) => (
+                        <GoogleButton
+                            key={`${theme}-${shape}-${variant}`}
+                            theme={theme}
+                            shape={shape}
+                            variant={variant}
+                        />
+                    )),
+                ),
+            )}
         </div>
     ),
-    args: { height: 48 },
-};
-
-export const Disabled: Story = {
-    args: {
-        disabled: true,
-        theme: 'neutral',
-        shape: 'rounded',
-        variant: 'ctn',
-    },
-};
-
-export const CustomHeight: Story = {
-    args: {
-        height: 40,
-        theme: 'dark',
-        shape: 'square',
-        variant: 'na',
-    },
 };
