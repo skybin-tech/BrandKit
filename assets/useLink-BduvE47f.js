@@ -1,0 +1,1 @@
+import{r as o}from"./iframe-b-ZPA7P_.js";const c=(t,n="stylesheet",s="text/css")=>{o.useEffect(()=>{const e=document.createElement("link");return e.href=t,e.rel=n,e.type=s,document.head.appendChild(e),()=>{document.head.removeChild(e)}},[t,n,s])};export{c as u};
