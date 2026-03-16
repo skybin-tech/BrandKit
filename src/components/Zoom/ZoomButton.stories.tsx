@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FacebookButton from './FacebookButton';
+import ZoomButton from './ZoomButton';
 
-const meta: Meta<typeof FacebookButton> = {
-    title: 'Components/FacebookButton',
-    component: FacebookButton,
+const meta: Meta<typeof ZoomButton> = {
+    title: 'Components/ZoomButton',
+    component: ZoomButton,
     tags: ['autodocs'],
     argTypes: {
         mode: { control: 'radio', options: ['signin', 'signup', 'continue'] },

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LinkedInIcon from './LinkedInIcon';
+import TwitterIcon from './TwitterIcon';
 
-export interface LinkedInButtonProps {
+export interface TwitterButtonProps {
   mode?: 'signin' | 'signup' | 'continue';
   dark?: boolean;
   shape?: 'square' | 'rounded';
@@ -16,25 +16,27 @@ export interface LinkedInButtonProps {
 const themes = {
   light: css`
     background: #ffffff;
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
+    color: #0f1419;
+    border: 1px solid #cfd9de;
+    svg { fill: #0f1419; }
   `,
   dark: css`
-    background: #0a66c2;
+    background: #0f1419;
     color: #ffffff;
     border: none;
+    svg { fill: #ffffff; }
   `,
 };
 
 const shapes = {
-  square: css`border-radius: 6px;`,
+  square: css`border-radius: 4px;`,
   rounded: css`border-radius: 9999px;`,
 };
 
 const labels = {
-  signin: 'Sign in with LinkedIn',
-  signup: 'Sign up with LinkedIn',
-  continue: 'Continue with LinkedIn',
+  signin: 'Sign in with X',
+  signup: 'Sign up with X',
+  continue: 'Continue with X',
 };
 
 const Button = styled.button<{
@@ -50,17 +52,17 @@ const Button = styled.button<{
   width: ${({ $width }) => (typeof $width === 'number' ? `${$width}px` : $width ?? 'auto')};
   height: ${({ $height }) => (typeof $height === 'number' ? `${$height}px` : $height ?? '40px')};
   padding: 0 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: filter 0.2s, box-shadow 0.2s;
+  transition: box-shadow 0.2s, filter 0.2s;
   ${({ $dark }) => ($dark ? themes.dark : themes.light)};
   ${({ $shape }) => shapes[$shape]};
 
   &:hover:not(:disabled) {
-    filter: brightness(0.95);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    filter: brightness(0.95);
   }
 
   &&:disabled {
@@ -69,10 +71,10 @@ const Button = styled.button<{
   }
 `;
 
-const LinkedInButton: React.FC<LinkedInButtonProps> = ({
+const TwitterButton: React.FC<TwitterButtonProps> = ({
   mode = 'signin',
   dark = true,
-  shape = 'square',
+  shape = 'rounded',
   width,
   height,
   onClick,
@@ -90,9 +92,9 @@ const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     className={className}
     aria-label={labels[mode]}
   >
-    <LinkedInIcon />
+    <TwitterIcon />
     {labels[mode]}
   </Button>
 );
 
-export default LinkedInButton;
+export default TwitterButton;

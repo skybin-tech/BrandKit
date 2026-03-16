@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LinkedInIcon from './LinkedInIcon';
+import SteamIcon from './SteamIcon';
 
-export interface LinkedInButtonProps {
+export interface SteamButtonProps {
   mode?: 'signin' | 'signup' | 'continue';
   dark?: boolean;
   shape?: 'square' | 'rounded';
@@ -16,25 +16,27 @@ export interface LinkedInButtonProps {
 const themes = {
   light: css`
     background: #ffffff;
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
+    color: #1b2838;
+    border: 1px solid #1b2838;
+    svg { fill: #1b2838; }
   `,
   dark: css`
-    background: #0a66c2;
-    color: #ffffff;
+    background: #1b2838;
+    color: #c6d4df;
     border: none;
+    svg { fill: #c6d4df; }
   `,
 };
 
 const shapes = {
-  square: css`border-radius: 6px;`,
+  square: css`border-radius: 4px;`,
   rounded: css`border-radius: 9999px;`,
 };
 
 const labels = {
-  signin: 'Sign in with LinkedIn',
-  signup: 'Sign up with LinkedIn',
-  continue: 'Continue with LinkedIn',
+  signin: 'Sign in with Steam',
+  signup: 'Sign up with Steam',
+  continue: 'Continue with Steam',
 };
 
 const Button = styled.button<{
@@ -50,7 +52,7 @@ const Button = styled.button<{
   width: ${({ $width }) => (typeof $width === 'number' ? `${$width}px` : $width ?? 'auto')};
   height: ${({ $height }) => (typeof $height === 'number' ? `${$height}px` : $height ?? '40px')};
   padding: 0 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -59,8 +61,8 @@ const Button = styled.button<{
   ${({ $shape }) => shapes[$shape]};
 
   &:hover:not(:disabled) {
-    filter: brightness(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    filter: brightness(1.1);
+    box-shadow: 0 2px 4px rgba(27, 40, 56, 0.4);
   }
 
   &&:disabled {
@@ -69,7 +71,7 @@ const Button = styled.button<{
   }
 `;
 
-const LinkedInButton: React.FC<LinkedInButtonProps> = ({
+const SteamButton: React.FC<SteamButtonProps> = ({
   mode = 'signin',
   dark = true,
   shape = 'square',
@@ -90,9 +92,9 @@ const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     className={className}
     aria-label={labels[mode]}
   >
-    <LinkedInIcon />
+    <SteamIcon />
     {labels[mode]}
   </Button>
 );
 
-export default LinkedInButton;
+export default SteamButton;

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LinkedInIcon from './LinkedInIcon';
+import MicrosoftIcon from './MicrosoftIcon';
 
-export interface LinkedInButtonProps {
+export interface MicrosoftButtonProps {
   mode?: 'signin' | 'signup' | 'continue';
   dark?: boolean;
   shape?: 'square' | 'rounded';
@@ -16,25 +16,25 @@ export interface LinkedInButtonProps {
 const themes = {
   light: css`
     background: #ffffff;
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
+    color: #1b1b1b;
+    border: 1px solid #8c8c8c;
   `,
   dark: css`
-    background: #0a66c2;
+    background: #2f2f2f;
     color: #ffffff;
-    border: none;
+    border: 1px solid #4a4a4a;
   `,
 };
 
 const shapes = {
-  square: css`border-radius: 6px;`,
+  square: css`border-radius: 4px;`,
   rounded: css`border-radius: 9999px;`,
 };
 
 const labels = {
-  signin: 'Sign in with LinkedIn',
-  signup: 'Sign up with LinkedIn',
-  continue: 'Continue with LinkedIn',
+  signin: 'Sign in with Microsoft',
+  signup: 'Sign up with Microsoft',
+  continue: 'Continue with Microsoft',
 };
 
 const Button = styled.button<{
@@ -46,21 +46,21 @@ const Button = styled.button<{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   width: ${({ $width }) => (typeof $width === 'number' ? `${$width}px` : $width ?? 'auto')};
   height: ${({ $height }) => (typeof $height === 'number' ? `${$height}px` : $height ?? '40px')};
   padding: 0 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: filter 0.2s, box-shadow 0.2s;
+  transition: box-shadow 0.2s, filter 0.2s;
   ${({ $dark }) => ($dark ? themes.dark : themes.light)};
   ${({ $shape }) => shapes[$shape]};
 
   &:hover:not(:disabled) {
-    filter: brightness(0.95);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    filter: brightness(0.97);
   }
 
   &&:disabled {
@@ -69,9 +69,9 @@ const Button = styled.button<{
   }
 `;
 
-const LinkedInButton: React.FC<LinkedInButtonProps> = ({
+const MicrosoftButton: React.FC<MicrosoftButtonProps> = ({
   mode = 'signin',
-  dark = true,
+  dark = false,
   shape = 'square',
   width,
   height,
@@ -90,9 +90,9 @@ const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     className={className}
     aria-label={labels[mode]}
   >
-    <LinkedInIcon />
+    <MicrosoftIcon />
     {labels[mode]}
   </Button>
 );
 
-export default LinkedInButton;
+export default MicrosoftButton;

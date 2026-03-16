@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LinkedInIcon from './LinkedInIcon';
+import SlackIcon from './SlackIcon';
 
-export interface LinkedInButtonProps {
+export interface SlackButtonProps {
   mode?: 'signin' | 'signup' | 'continue';
   dark?: boolean;
   shape?: 'square' | 'rounded';
@@ -13,28 +13,30 @@ export interface LinkedInButtonProps {
   className?: string;
 }
 
+// Slack brand: official "Sign in with Slack" button is white with dark text — NOT the purple filled button.
+// Purple (#4A154B) is for dark backgrounds where a light button would be lost.
 const themes = {
   light: css`
     background: #ffffff;
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
+    color: #1d1c1d;
+    border: 1px solid #dddddd;
   `,
   dark: css`
-    background: #0a66c2;
+    background: #4a154b;
     color: #ffffff;
     border: none;
   `,
 };
 
 const shapes = {
-  square: css`border-radius: 6px;`,
+  square: css`border-radius: 4px;`,
   rounded: css`border-radius: 9999px;`,
 };
 
 const labels = {
-  signin: 'Sign in with LinkedIn',
-  signup: 'Sign up with LinkedIn',
-  continue: 'Continue with LinkedIn',
+  signin: 'Sign in with Slack',
+  signup: 'Sign up with Slack',
+  continue: 'Continue with Slack',
 };
 
 const Button = styled.button<{
@@ -50,9 +52,9 @@ const Button = styled.button<{
   width: ${({ $width }) => (typeof $width === 'number' ? `${$width}px` : $width ?? 'auto')};
   height: ${({ $height }) => (typeof $height === 'number' ? `${$height}px` : $height ?? '40px')};
   padding: 0 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', 'Roboto', Arial, sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   cursor: pointer;
   transition: filter 0.2s, box-shadow 0.2s;
   ${({ $dark }) => ($dark ? themes.dark : themes.light)};
@@ -60,7 +62,7 @@ const Button = styled.button<{
 
   &:hover:not(:disabled) {
     filter: brightness(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   }
 
   &&:disabled {
@@ -69,9 +71,9 @@ const Button = styled.button<{
   }
 `;
 
-const LinkedInButton: React.FC<LinkedInButtonProps> = ({
+const SlackButton: React.FC<SlackButtonProps> = ({
   mode = 'signin',
-  dark = true,
+  dark = false,
   shape = 'square',
   width,
   height,
@@ -90,9 +92,9 @@ const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     className={className}
     aria-label={labels[mode]}
   >
-    <LinkedInIcon />
+    <SlackIcon />
     {labels[mode]}
   </Button>
 );
 
-export default LinkedInButton;
+export default SlackButton;

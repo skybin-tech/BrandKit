@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FacebookButton from './FacebookButton';
+import PayPalButton from './PayPalButton';
 
-const meta: Meta<typeof FacebookButton> = {
-    title: 'Components/FacebookButton',
-    component: FacebookButton,
+const meta: Meta<typeof PayPalButton> = {
+    title: 'Components/PayPalButton',
+    component: PayPalButton,
     tags: ['autodocs'],
     argTypes: {
         mode: { control: 'radio', options: ['signin', 'signup', 'continue'] },

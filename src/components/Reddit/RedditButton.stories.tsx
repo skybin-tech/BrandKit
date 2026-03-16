@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FacebookButton from './FacebookButton';
+import RedditButton from './RedditButton';
 
-const meta: Meta<typeof FacebookButton> = {
-    title: 'Components/FacebookButton',
-    component: FacebookButton,
+const meta: Meta<typeof RedditButton> = {
+    title: 'Components/RedditButton',
+    component: RedditButton,
     tags: ['autodocs'],
     argTypes: {
         mode: { control: 'radio', options: ['signin', 'signup', 'continue'] },

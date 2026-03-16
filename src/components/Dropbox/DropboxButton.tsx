@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LinkedInIcon from './LinkedInIcon';
+import DropboxIcon from './DropboxIcon';
 
-export interface LinkedInButtonProps {
+export interface DropboxButtonProps {
   mode?: 'signin' | 'signup' | 'continue';
   dark?: boolean;
   shape?: 'square' | 'rounded';
@@ -13,28 +13,32 @@ export interface LinkedInButtonProps {
   className?: string;
 }
 
+// Dropbox brand: primary is Dropbox Blue (#0061FF) with white text.
+// Dark mode: Dropbox's dark UI uses #1e1919 (dark warm black) background.
 const themes = {
   light: css`
-    background: #ffffff;
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
-  `,
-  dark: css`
-    background: #0a66c2;
+    background: #0061ff;
     color: #ffffff;
     border: none;
+    svg { fill: #ffffff; }
+  `,
+  dark: css`
+    background: #1e1919;
+    color: #0061ff;
+    border: 1px solid #0061ff;
+    svg { fill: #0061ff; }
   `,
 };
 
 const shapes = {
-  square: css`border-radius: 6px;`,
+  square: css`border-radius: 4px;`,
   rounded: css`border-radius: 9999px;`,
 };
 
 const labels = {
-  signin: 'Sign in with LinkedIn',
-  signup: 'Sign up with LinkedIn',
-  continue: 'Continue with LinkedIn',
+  signin: 'Sign in with Dropbox',
+  signup: 'Sign up with Dropbox',
+  continue: 'Continue with Dropbox',
 };
 
 const Button = styled.button<{
@@ -50,7 +54,7 @@ const Button = styled.button<{
   width: ${({ $width }) => (typeof $width === 'number' ? `${$width}px` : $width ?? 'auto')};
   height: ${({ $height }) => (typeof $height === 'number' ? `${$height}px` : $height ?? '40px')};
   padding: 0 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -59,8 +63,8 @@ const Button = styled.button<{
   ${({ $shape }) => shapes[$shape]};
 
   &:hover:not(:disabled) {
-    filter: brightness(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    filter: brightness(0.92);
+    box-shadow: 0 2px 4px rgba(0, 97, 255, 0.3);
   }
 
   &&:disabled {
@@ -69,9 +73,9 @@ const Button = styled.button<{
   }
 `;
 
-const LinkedInButton: React.FC<LinkedInButtonProps> = ({
+const DropboxButton: React.FC<DropboxButtonProps> = ({
   mode = 'signin',
-  dark = true,
+  dark = false,
   shape = 'square',
   width,
   height,
@@ -90,9 +94,9 @@ const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     className={className}
     aria-label={labels[mode]}
   >
-    <LinkedInIcon />
+    <DropboxIcon />
     {labels[mode]}
   </Button>
 );
 
-export default LinkedInButton;
+export default DropboxButton;

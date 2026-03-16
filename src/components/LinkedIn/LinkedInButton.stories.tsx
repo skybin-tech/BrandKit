@@ -1,21 +1,26 @@
-// src/components/LinkedInLoginBtn/LinkedInLoginBtn.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 import LinkedInButton from './LinkedInButton';
 
 const meta: Meta<typeof LinkedInButton> = {
     title: 'Components/LinkedInButton',
     component: LinkedInButton,
+    tags: ['autodocs'],
     argTypes: {
-        mode: { control: 'radio', options: ['login', 'continue'] },
+        mode: { control: 'radio', options: ['signin', 'signup', 'continue'] },
         dark: { control: 'boolean' },
+        shape: { control: 'radio', options: ['square', 'rounded'] },
+        width: { control: { type: 'text' } },
+        height: { control: { type: 'text' } },
         disabled: { control: 'boolean' },
-        shape: { control: 'radio', options: ['round', 'square'] },
     },
+    // LinkedIn Blue filled button is the canonical LinkedIn sign-in button.
+    args: { mode: 'signin', dark: true, shape: 'square', disabled: false },
 };
 export default meta;
 
-export const LightLoginRound: StoryObj = { args: { mode: 'login', dark: false, shape: 'round' } };
-export const DarkLoginSquare: StoryObj = { args: { mode: 'login', dark: true, shape: 'square' }, parameters: { backgrounds: { default: 'dark' } } };
-export const LightContinueRound: StoryObj = { args: { mode: 'continue', dark: false, shape: 'round' } };
-export const DarkContinueSquare: StoryObj = { args: { mode: 'continue', dark: true, shape: 'square' }, parameters: { backgrounds: { default: 'dark' } } };
-export const DisabledRound: StoryObj = { args: { mode: 'login', dark: false, disabled: true, shape: 'round' } };
+export const Dark: StoryObj = { args: { dark: true } };
+export const Light: StoryObj = { args: { dark: false } };
+export const Rounded: StoryObj = { args: { shape: 'rounded' } };
+export const Signup: StoryObj = { args: { mode: 'signup' } };
+export const Continue: StoryObj = { args: { mode: 'continue' } };
+export const Disabled: StoryObj = { args: { disabled: true } };

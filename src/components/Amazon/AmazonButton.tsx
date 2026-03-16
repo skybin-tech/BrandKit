@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LinkedInIcon from './LinkedInIcon';
+import AmazonIcon from './AmazonIcon';
 
-export interface LinkedInButtonProps {
+export interface AmazonButtonProps {
   mode?: 'signin' | 'signup' | 'continue';
   dark?: boolean;
   shape?: 'square' | 'rounded';
@@ -13,28 +13,30 @@ export interface LinkedInButtonProps {
   className?: string;
 }
 
+// Amazon brand: white button is the standard "Sign in with Amazon" button.
+// Dark: Amazon's dark navy (#131921) with orange (#FF9900) accent — matches their dark UI.
 const themes = {
   light: css`
     background: #ffffff;
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
+    color: #0f1111;
+    border: 1px solid #bbb9b9;
   `,
   dark: css`
-    background: #0a66c2;
-    color: #ffffff;
-    border: none;
+    background: #131921;
+    color: #ff9900;
+    border: 1px solid #3a4553;
   `,
 };
 
 const shapes = {
-  square: css`border-radius: 6px;`,
+  square: css`border-radius: 4px;`,
   rounded: css`border-radius: 9999px;`,
 };
 
 const labels = {
-  signin: 'Sign in with LinkedIn',
-  signup: 'Sign up with LinkedIn',
-  continue: 'Continue with LinkedIn',
+  signin: 'Sign in with Amazon',
+  signup: 'Sign up with Amazon',
+  continue: 'Continue with Amazon',
 };
 
 const Button = styled.button<{
@@ -50,7 +52,7 @@ const Button = styled.button<{
   width: ${({ $width }) => (typeof $width === 'number' ? `${$width}px` : $width ?? 'auto')};
   height: ${({ $height }) => (typeof $height === 'number' ? `${$height}px` : $height ?? '40px')};
   padding: 0 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Amazon Ember', 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -60,7 +62,7 @@ const Button = styled.button<{
 
   &:hover:not(:disabled) {
     filter: brightness(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   }
 
   &&:disabled {
@@ -69,9 +71,9 @@ const Button = styled.button<{
   }
 `;
 
-const LinkedInButton: React.FC<LinkedInButtonProps> = ({
+const AmazonButton: React.FC<AmazonButtonProps> = ({
   mode = 'signin',
-  dark = true,
+  dark = false,
   shape = 'square',
   width,
   height,
@@ -90,9 +92,9 @@ const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     className={className}
     aria-label={labels[mode]}
   >
-    <LinkedInIcon />
+    <AmazonIcon />
     {labels[mode]}
   </Button>
 );
 
-export default LinkedInButton;
+export default AmazonButton;

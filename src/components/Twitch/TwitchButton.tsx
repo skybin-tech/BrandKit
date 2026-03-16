@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LinkedInIcon from './LinkedInIcon';
+import TwitchIcon from './TwitchIcon';
 
-export interface LinkedInButtonProps {
+export interface TwitchButtonProps {
   mode?: 'signin' | 'signup' | 'continue';
   dark?: boolean;
   shape?: 'square' | 'rounded';
@@ -13,28 +13,32 @@ export interface LinkedInButtonProps {
   className?: string;
 }
 
+// Twitch brand: primary is TwitchPurple (#9146FF) on light pages.
+// Dark mode uses Core Black (#0e0e10) — Twitch's official dark theme background.
 const themes = {
   light: css`
-    background: #ffffff;
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
-  `,
-  dark: css`
-    background: #0a66c2;
+    background: #9146ff;
     color: #ffffff;
     border: none;
+    svg { fill: #ffffff; }
+  `,
+  dark: css`
+    background: #0e0e10;
+    color: #9146ff;
+    border: 1px solid #9146ff;
+    svg { fill: #9146ff; }
   `,
 };
 
 const shapes = {
-  square: css`border-radius: 6px;`,
+  square: css`border-radius: 4px;`,
   rounded: css`border-radius: 9999px;`,
 };
 
 const labels = {
-  signin: 'Sign in with LinkedIn',
-  signup: 'Sign up with LinkedIn',
-  continue: 'Continue with LinkedIn',
+  signin: 'Sign in with Twitch',
+  signup: 'Sign up with Twitch',
+  continue: 'Continue with Twitch',
 };
 
 const Button = styled.button<{
@@ -50,17 +54,17 @@ const Button = styled.button<{
   width: ${({ $width }) => (typeof $width === 'number' ? `${$width}px` : $width ?? 'auto')};
   height: ${({ $height }) => (typeof $height === 'number' ? `${$height}px` : $height ?? '40px')};
   padding: 0 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: filter 0.2s, box-shadow 0.2s;
   ${({ $dark }) => ($dark ? themes.dark : themes.light)};
   ${({ $shape }) => shapes[$shape]};
 
   &:hover:not(:disabled) {
-    filter: brightness(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    filter: brightness(0.9);
+    box-shadow: 0 2px 4px rgba(145, 70, 255, 0.35);
   }
 
   &&:disabled {
@@ -69,9 +73,9 @@ const Button = styled.button<{
   }
 `;
 
-const LinkedInButton: React.FC<LinkedInButtonProps> = ({
+const TwitchButton: React.FC<TwitchButtonProps> = ({
   mode = 'signin',
-  dark = true,
+  dark = false,
   shape = 'square',
   width,
   height,
@@ -90,9 +94,9 @@ const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     className={className}
     aria-label={labels[mode]}
   >
-    <LinkedInIcon />
+    <TwitchIcon />
     {labels[mode]}
   </Button>
 );
 
-export default LinkedInButton;
+export default TwitchButton;

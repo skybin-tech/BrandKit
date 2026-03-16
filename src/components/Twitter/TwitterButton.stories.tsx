@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FacebookButton from './FacebookButton';
+import TwitterButton from './TwitterButton';
 
-const meta: Meta<typeof FacebookButton> = {
-    title: 'Components/FacebookButton',
-    component: FacebookButton,
+const meta: Meta<typeof TwitterButton> = {
+    title: 'Components/TwitterButton',
+    component: TwitterButton,
     tags: ['autodocs'],
     argTypes: {
         mode: { control: 'radio', options: ['signin', 'signup', 'continue'] },
@@ -13,13 +13,19 @@ const meta: Meta<typeof FacebookButton> = {
         height: { control: { type: 'text' } },
         disabled: { control: 'boolean' },
     },
-    args: { mode: 'signin', dark: false, shape: 'square', disabled: false },
+    args: {
+        mode: 'signin',
+        dark: true,
+        shape: 'rounded',
+        disabled: false,
+    },
 };
+
 export default meta;
 
+export const Dark: StoryObj = { args: { dark: true } };
 export const Light: StoryObj = { args: { dark: false } };
-export const Dark: StoryObj = { args: { dark: true }, parameters: { backgrounds: { default: 'dark' } } };
-export const Rounded: StoryObj = { args: { shape: 'rounded' } };
+export const Square: StoryObj = { args: { shape: 'square' } };
 export const Signup: StoryObj = { args: { mode: 'signup' } };
 export const Continue: StoryObj = { args: { mode: 'continue' } };
 export const Disabled: StoryObj = { args: { disabled: true } };

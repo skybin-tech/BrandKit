@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FacebookButton from './FacebookButton';
+import AmazonButton from './AmazonButton';
 
-const meta: Meta<typeof FacebookButton> = {
-    title: 'Components/FacebookButton',
-    component: FacebookButton,
+const meta: Meta<typeof AmazonButton> = {
+    title: 'Components/AmazonButton',
+    component: AmazonButton,
     tags: ['autodocs'],
     argTypes: {
         mode: { control: 'radio', options: ['signin', 'signup', 'continue'] },
@@ -13,6 +13,7 @@ const meta: Meta<typeof FacebookButton> = {
         height: { control: { type: 'text' } },
         disabled: { control: 'boolean' },
     },
+    // White is the canonical "Sign in with Amazon" button — not the orange-background version.
     args: { mode: 'signin', dark: false, shape: 'square', disabled: false },
 };
 export default meta;

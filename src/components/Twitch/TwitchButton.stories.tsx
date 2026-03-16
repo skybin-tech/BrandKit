@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import FacebookButton from './FacebookButton';
+import TwitchButton from './TwitchButton';
 
-const meta: Meta<typeof FacebookButton> = {
-    title: 'Components/FacebookButton',
-    component: FacebookButton,
+const meta: Meta<typeof TwitchButton> = {
+    title: 'Components/TwitchButton',
+    component: TwitchButton,
     tags: ['autodocs'],
     argTypes: {
         mode: { control: 'radio', options: ['signin', 'signup', 'continue'] },
@@ -13,6 +13,7 @@ const meta: Meta<typeof FacebookButton> = {
         height: { control: { type: 'text' } },
         disabled: { control: 'boolean' },
     },
+    // TwitchPurple button is the canonical Twitch button for light backgrounds.
     args: { mode: 'signin', dark: false, shape: 'square', disabled: false },
 };
 export default meta;

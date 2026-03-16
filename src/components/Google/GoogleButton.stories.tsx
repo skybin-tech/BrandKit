@@ -1,35 +1,22 @@
-// src/components/GoogleButton/GoogleButton.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 import GoogleButton from './GoogleButton';
-import type { GoogleButtonTheme, GoogleButtonShape, GoogleButtonVariant } from './GoogleButton.types';
 
 const meta: Meta<typeof GoogleButton> = {
     title: 'Components/GoogleButton',
     component: GoogleButton,
     tags: ['autodocs'],
     argTypes: {
-        theme: {
-            control: 'radio',
-            options: ['light', 'dark'] satisfies GoogleButtonTheme[],
-        },
-        shape: {
-            control: 'radio',
-            options: ['square', 'rounded'] satisfies GoogleButtonShape[],
-        },
-        variant: {
-            control: 'radio',
-            options: ['SI', 'SU', 'ctn'] satisfies GoogleButtonVariant[],
-        },
+        mode: { control: 'radio', options: ['signin', 'signup', 'continue'] },
+        dark: { control: 'boolean' },
+        shape: { control: 'radio', options: ['square', 'rounded'] },
         width: { control: { type: 'text' } },
         height: { control: { type: 'text' } },
         disabled: { control: 'boolean' },
     },
     args: {
-        theme: 'light',
+        mode: 'signin',
+        dark: false,
         shape: 'square',
-        variant: 'SI',
-        width: undefined,
-        height: undefined,
         disabled: false,
     },
 };
@@ -37,21 +24,19 @@ const meta: Meta<typeof GoogleButton> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-/* ---- Single playground story ---- */
 export const Playground: Story = {};
 
-/* ---- Matrix of all compliant combos ---- */
 export const AllVariants: Story = {
     render: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {(['light', 'dark'] as const).map((theme) =>
+            {([false, true] as const).map((dark) =>
                 (['square', 'rounded'] as const).map((shape) =>
-                    (['SI', 'SU', 'ctn'] as const).map((variant) => (
+                    (['signin', 'signup', 'continue'] as const).map((mode) => (
                         <GoogleButton
-                            key={`${theme}-${shape}-${variant}`}
-                            theme={theme}
+                            key={`${dark}-${shape}-${mode}`}
+                            dark={dark}
                             shape={shape}
-                            variant={variant}
+                            mode={mode}
                         />
                     )),
                 ),

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LinkedInIcon from './LinkedInIcon';
+import TikTokIcon from './TikTokIcon';
 
-export interface LinkedInButtonProps {
+export interface TikTokButtonProps {
   mode?: 'signin' | 'signup' | 'continue';
   dark?: boolean;
   shape?: 'square' | 'rounded';
@@ -16,25 +16,27 @@ export interface LinkedInButtonProps {
 const themes = {
   light: css`
     background: #ffffff;
-    color: #0a66c2;
-    border: 1px solid #0a66c2;
+    color: #000000;
+    border: 1px solid #000000;
+    svg { fill: #000000; }
   `,
   dark: css`
-    background: #0a66c2;
+    background: #000000;
     color: #ffffff;
     border: none;
+    svg { fill: #ffffff; }
   `,
 };
 
 const shapes = {
-  square: css`border-radius: 6px;`,
+  square: css`border-radius: 4px;`,
   rounded: css`border-radius: 9999px;`,
 };
 
 const labels = {
-  signin: 'Sign in with LinkedIn',
-  signup: 'Sign up with LinkedIn',
-  continue: 'Continue with LinkedIn',
+  signin: 'Sign in with TikTok',
+  signup: 'Sign up with TikTok',
+  continue: 'Continue with TikTok',
 };
 
 const Button = styled.button<{
@@ -50,7 +52,7 @@ const Button = styled.button<{
   width: ${({ $width }) => (typeof $width === 'number' ? `${$width}px` : $width ?? 'auto')};
   height: ${({ $height }) => (typeof $height === 'number' ? `${$height}px` : $height ?? '40px')};
   padding: 0 16px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -59,8 +61,8 @@ const Button = styled.button<{
   ${({ $shape }) => shapes[$shape]};
 
   &:hover:not(:disabled) {
-    filter: brightness(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    filter: brightness(0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   &&:disabled {
@@ -69,7 +71,7 @@ const Button = styled.button<{
   }
 `;
 
-const LinkedInButton: React.FC<LinkedInButtonProps> = ({
+const TikTokButton: React.FC<TikTokButtonProps> = ({
   mode = 'signin',
   dark = true,
   shape = 'square',
@@ -90,9 +92,9 @@ const LinkedInButton: React.FC<LinkedInButtonProps> = ({
     className={className}
     aria-label={labels[mode]}
   >
-    <LinkedInIcon />
+    <TikTokIcon />
     {labels[mode]}
   </Button>
 );
 
-export default LinkedInButton;
+export default TikTokButton;
