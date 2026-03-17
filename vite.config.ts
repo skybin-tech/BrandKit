@@ -37,6 +37,7 @@ export default defineConfig({
           'styled-components': 'styled',
           '@primer/octicons-react': 'Octicons'
         },
+        banner: '"use client";',
       },
     },
   },
