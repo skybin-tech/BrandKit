@@ -29,16 +29,36 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'styled-components', '@primer/octicons-react'],
-      output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          'styled-components': 'styled',
-          '@primer/octicons-react': 'Octicons'
+      external: [
+        'react',
+        'react/jsx-runtime',
+        'react/jsx-dev-runtime',
+        'react-dom',
+        'react-dom/client',
+        'styled-components',
+        '@primer/octicons-react',
+      ],
+      output: [
+        {
+          format: 'es',
+          entryFileNames: 'index.es.js',
+          banner: '"use client";',
         },
-        banner: '"use client";',
-      },
+        {
+          format: 'umd',
+          name: 'BrandKit',
+          entryFileNames: 'index.umd.js',
+          globals: {
+            react: 'React',
+            'react/jsx-runtime': 'ReactJSXRuntime',
+            'react/jsx-dev-runtime': 'ReactJSXDevRuntime',
+            'react-dom': 'ReactDOM',
+            'react-dom/client': 'ReactDOMClient',
+            'styled-components': 'styled',
+            '@primer/octicons-react': 'Octicons',
+          },
+        },
+      ],
     },
   },
 });
