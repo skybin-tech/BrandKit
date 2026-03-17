@@ -187,6 +187,32 @@ yarn lint            # ESLint with auto-fix
 yarn format          # Prettier formatting
 ```
 
+## Changelog
+
+### v1.0.23
+- Fix: Add `"use client"` banner to compiled output for Next.js App Router / Turbopack compatibility
+- Fix: Correct `exports` map — move `types` condition before `import`/`require` to resolve bundler warning
+
+### v1.0.22
+- Fix: Correct `exports` map condition order (`types` must precede `import`/`require`)
+- Fix: Add `styled-components` to `devDependencies` so Storybook resolves it correctly
+
+### v1.0.21
+- Add 16 new social buttons: Apple, Microsoft, Twitter/X, Discord, Slack, Spotify, Reddit, Twitch, GitLab, Bitbucket, Amazon, TikTok, PayPal, Dropbox, Zoom, Steam
+- Brand compliance audit: fixed Amazon (white is canonical), Slack (white is canonical), LinkedIn (blue-filled is canonical), Spotify (black text on green per brand rule)
+- Add dark/light themes to all buttons with brand-accurate palettes
+- Normalize prop API across all buttons (`mode`, `dark`, `shape`, `width`, `height`)
+- Add Storybook stories for all 20 buttons
+- Add tree-shaking support (`sideEffects: false`, `exports` field pointing to ESM build)
+- Fix: Remove hardcoded `width: 240px` from GitHubButton
+- Fix: Remove broken `${className}` interpolation in LinkedInButton
+- Fix: Remove `all: unset` from FacebookButton (was breaking focus rings)
+- Fix: Wire up `mode` prop in FacebookButton (label was always "Continue with Facebook")
+- Update `GoogleButton.types.ts`: rename `'SI'|'SU'|'ctn'` → `'signin'|'signup'|'continue'`
+
+### v1.0.20 and earlier
+- Initial release with Google, GitHub, Facebook, LinkedIn buttons
+
 ## License
 
 MIT — see [LICENSE](./LICENSE)
