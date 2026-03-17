@@ -189,6 +189,11 @@ yarn format          # Prettier formatting
 
 ## Changelog
 
+### v1.0.24
+- Fix: Externalize `react/jsx-runtime`, `react/jsx-dev-runtime`, and `react-dom/client` to eliminate CJS `require()` shims from the ESM build
+- Fix: Split Rollup output config per-format so `"use client"` banner and `globals` are applied correctly to ESM and UMD respectively
+- Result: `dist/index.es.js` now contains only `import` statements — no `require()` calls — resolving the Turbopack "dynamic usage of require is not supported" error
+
 ### v1.0.23
 - Fix: Add `"use client"` banner to compiled output for Next.js App Router / Turbopack compatibility
 - Fix: Correct `exports` map — move `types` condition before `import`/`require` to resolve bundler warning
